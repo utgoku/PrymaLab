@@ -127,16 +127,23 @@ Dự án được tối ưu hóa để triển khai trên [Vercel](https://verce
 | `PRYMALAB_ADMIN_PASSWORD` | Mật khẩu quản trị | Secret trên Vercel |
 | `PRYMALAB_ADMIN_SESSION_SECRET` | Khóa ký phiên HttpOnly | Secret trên Vercel |
 
+## 🛡️ Cổng kiểm soát thương hiệu và phát hành
+
+Tên `PrymaLab` đang ở trạng thái **GO có điều kiện tại Việt Nam** vì có một đơn vị tại `prymalab.net` dùng cùng tên trong lĩnh vực peptide/nghiên cứu và có nội dung chạm tới giấc ngủ, tâm trạng, chuyển hóa. Organic SEO cho dịch vụ giáo dục lối sống tại Việt Nam được phép tiếp tục; không mở bán thực phẩm bổ sung/peptide, không mua backlink, không in bao bì và không dùng ký hiệu `®` cho đến khi hoàn tất tra cứu chuyên sâu tại Việt Nam, Hoa Kỳ và WIPO cùng ý kiến bằng văn bản của luật sư nhãn hiệu.
+
+Xem hồ sơ kiểm soát tại:
+
+- `docs/BRAND-RISK-REGISTER.md`
+- `docs/TRADEMARK-COUNSEL-BRIEF.md`
+- `docs/IP-ASSET-REGISTER.md`
+- `docs/EXIT-READINESS.md`
+- `docs/DEPENDENCY-LICENSE-AUDIT.md`
+- `docs/SEARCH-CONSOLE-RUNBOOK.md`
+
 ## 📄 Giấy phép (License)
 
-Dự án này được phân phối dưới giấy phép **MIT**. Xem file `LICENSE` để biết thêm chi tiết.
+Mã nguồn và tài sản gốc của dự án là **proprietary / all rights reserved**. Các thư viện bên thứ ba tiếp tục tuân theo giấy phép riêng của chúng. Xem `LICENSE`.
 
 ## 🤝 Đóng góp (Contributing)
 
-Chúng tôi hoan nghênh mọi đóng góp! Vui lòng đọc qua `CONTRIBUTING.md` (nếu có) trước khi tạo Pull Request.
-
-1. Fork dự án
-2. Tạo branch tính năng (`git checkout -b feature/AmazingFeature`)
-3. Commit thay đổi (`git commit -m 'Add some AmazingFeature'`)
-4. Push lên branch (`git push origin feature/AmazingFeature`)
-5. Mở Pull Request
+Không nhận đóng góp mã nguồn bên ngoài khi chưa có thỏa thuận chuyển giao IP bằng văn bản. Xem `CONTRIBUTING.md`.

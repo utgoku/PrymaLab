@@ -25,6 +25,7 @@ export default async function HomePage() {
         alternateName: SITE_ALTERNATE_NAMES,
         url: `${SITE_URL}/`,
         description: 'Nền tảng tại Việt Nam về giáo dục dinh dưỡng, chất lượng giấc ngủ và xây dựng thói quen theo nhịp sống cá nhân. Không kinh doanh peptide hoặc hóa chất nghiên cứu.',
+        disambiguatingDescription: 'PrymaLab Việt Nam tại prymalab.com là một dự án độc lập về dinh dưỡng, giấc ngủ và thói quen; không liên kết, không được ủy quyền và không cùng chủ sở hữu với prymalab.net.',
         slogan: 'Ăn đúng nhịp. Ngủ sâu hơn. Sống sáng hơn.',
         logo: {
           '@type': 'ImageObject',

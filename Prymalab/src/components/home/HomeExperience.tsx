@@ -67,6 +67,10 @@ const journeySteps = [
 
 const faqs = [
   {
+    question: 'PrymaLab Việt Nam tại prymalab.com là đơn vị nào?',
+    answer: 'PrymaLab Việt Nam tại prymalab.com là dự án độc lập về giáo dục dinh dưỡng, chất lượng giấc ngủ và xây dựng thói quen cho người trưởng thành tại Việt Nam. Dự án không bán peptide hoặc hóa chất nghiên cứu và không liên kết, không được ủy quyền, không cùng chủ sở hữu với prymalab.net.',
+  },
+  {
     question: 'PrymaLab kết hợp dinh dưỡng và giấc ngủ như thế nào?',
     answer: 'PrymaLab xem hai yếu tố này như một vòng phản hồi: ăn uống ảnh hưởng đến năng lượng và khả năng thư giãn, còn giấc ngủ tác động tới cảm giác đói, lựa chọn thực phẩm và khả năng duy trì thói quen. Lộ trình được thiết kế để hai phần hỗ trợ nhau theo từng ngày.',
   },
