@@ -67,7 +67,7 @@ export default function BlogPage() {
       <main className="flex-grow pt-36 pb-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="section-kicker">Kho kiến thức PrymaLab</p><h1 className="mt-6 text-4xl md:text-6xl font-[family-name:var(--font-display)] font-semibold tracking-[-0.04em] text-[#153339] mb-5">Hiểu đủ sâu để chọn một thay đổi đúng.</h1>
+            <p className="section-kicker">Kho kiến thức PrymaLab</p><h1 className="mb-5 mt-6 font-[family-name:var(--font-display)] text-4xl font-medium tracking-[-0.035em] text-[#1d4146] md:text-5xl">Hiểu đủ sâu để chọn một thay đổi đúng.</h1>
             <p className="text-[#60767a] leading-8 max-w-2xl mx-auto">Mỗi bài viết trả lời thẳng câu hỏi chính, dẫn nguồn có thể kiểm tra và nói rõ giới hạn — để kiến thức trở thành hành động thực tế.</p>
           </div>
 

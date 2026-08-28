@@ -105,8 +105,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <div className="mx-auto max-w-4xl">
               <Link href="/blog" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white/65 transition hover:text-white"><ArrowLeft className="h-4 w-4" /> Kho kiến thức</Link>
               <p className="mt-10 text-xs font-extrabold uppercase tracking-[0.18em] text-[#d9f46f]">{article.category}</p>
-              <h1 className="mt-5 font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.12] tracking-[-0.035em] sm:text-5xl lg:text-6xl">{article.title}</h1>
-              <p className="mt-7 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">{article.description}</p>
+              <h1 className="mt-5 max-w-4xl font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.03em] sm:text-4xl lg:text-5xl">{article.title}</h1>
+              <p className="mt-6 max-w-3xl text-[15px] leading-7 text-white/70 sm:text-base">{article.description}</p>
               <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-white/55"><Link href="/chinh-sach-bien-tap" className="underline decoration-white/30 underline-offset-4 transition hover:text-white">Ban biên tập PrymaLab Việt Nam</Link><span>•</span><time dateTime={article.updatedAt}>Cập nhật {article.displayDate}</time><span>•</span><span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4" />{article.readTime}</span></div>
             </div>
           </header>
@@ -132,8 +132,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </section>
               <div className="mt-12 space-y-12">
                 {article.sections.map((section) => <section key={section.heading}>
-                  <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold leading-tight tracking-[-0.03em]">{section.heading}</h2>
-                  <div className="mt-5 space-y-5 text-base leading-8 text-[#566f74]">{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-medium leading-tight tracking-[-0.025em] sm:text-3xl">{section.heading}</h2>
+                  <div className="mt-5 space-y-5 text-[15px] leading-7 text-[#566f74] sm:text-base">{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
                   {section.bullets && <ul className="mt-5 space-y-3">{section.bullets.map((item) => <li key={item} className="flex gap-3 rounded-2xl border border-[#dce5e1] bg-white p-4 text-sm leading-7 text-[#526b70]"><CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#0b8a78]" />{item}</li>)}</ul>}
                 </section>)}
               </div>

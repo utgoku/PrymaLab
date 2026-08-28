@@ -7,7 +7,7 @@ export default function PackagesSection({ packages }: { packages?: SitePackage[]
   const displayPackages = packages?.length ? packages : DEFAULT_SITE_PACKAGES;
   return <section id="goi-dich-vu" className="scroll-mt-28 bg-[#edf2ec] px-5 py-24 sm:px-8 lg:py-28">
     <div className="mx-auto max-w-[88rem]">
-      <div className="grid items-end gap-6 lg:grid-cols-[1fr_0.7fr]"><div><p className="section-kicker">Ba mức đồng hành</p><h2 className="mt-5 max-w-4xl font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.1] tracking-[-0.035em] sm:text-5xl">Chọn độ sâu phù hợp với nhịp sống hiện tại.</h2></div><p className="max-w-xl text-sm leading-7 text-[#657a7e] lg:justify-self-end">Mỗi chương trình đều ghi rõ thời lượng, nội dung và mức đầu tư. PrymaLab không hứa kết quả y khoa hay con số thay đổi giống nhau cho mọi người.</p></div>
+      <div className="grid items-end gap-6 lg:grid-cols-[1fr_0.7fr]"><div><p className="section-kicker">Ba mức đồng hành</p><h2 className="mt-5 max-w-3xl font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.03em] sm:text-4xl lg:text-5xl">Chọn mức hỗ trợ phù hợp với nhịp sống.</h2></div><p className="max-w-lg text-sm leading-6 text-[#657a7e] lg:justify-self-end">Mỗi chương trình ghi rõ thời lượng, nội dung và mức đầu tư.</p></div>
       <div className="mt-12 grid gap-5 lg:grid-cols-3">
         {displayPackages.map((pkg, index) => {
           const featured = pkg.id === 'transformation' || index === 1;

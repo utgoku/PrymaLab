@@ -57,7 +57,7 @@ function StepTitle({ eyebrow, title, copy }: { eyebrow: string; title: string; c
   return (
     <div className="mb-8">
       <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0b7f72]">{eyebrow}</p>
-      <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold leading-[1.12] tracking-[-0.03em] text-[#153339] sm:text-4xl">{title}</h2>
+      <h2 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-medium leading-[1.15] tracking-[-0.025em] text-[#1d4146] sm:text-3xl">{title}</h2>
       <p className="mt-3 max-w-2xl text-sm leading-6 text-[#657a7e]">{copy}</p>
     </div>
   );
@@ -189,7 +189,7 @@ export default function QuizEngine() {
         <div className="relative">
           <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.08] text-[#d9f46f]"><Sparkles className="h-5 w-5" aria-hidden="true" /></span>
           <p className="mt-7 text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8ed7cb]">Pryma Baseline</p>
-          <h1 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-semibold leading-[1.12] tracking-[-0.03em] sm:text-4xl">Hiểu điểm xuất phát trước khi chọn lộ trình.</h1>
+          <h1 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-medium leading-[1.12] tracking-[-0.03em] sm:text-4xl">Hiểu điểm xuất phát trước khi chọn lộ trình.</h1>
           <p className="mt-4 text-sm leading-7 text-white/55">Bài đánh giá người trưởng thành kết nối cơ thể, năng lượng và các tín hiệu giấc ngủ trong khoảng 2 phút.</p>
         </div>
 

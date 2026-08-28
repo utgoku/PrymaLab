@@ -26,7 +26,7 @@ export default function QuizResult({ scores, onRestart }: { scores: QuizResults;
         <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_auto]">
           <div>
             <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8ed7cb]">Bản đọc Pryma Baseline</p>
-            <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.1] tracking-[-0.035em] sm:text-5xl">Điểm xuất phát đã rõ. Bây giờ chỉ cần chọn đúng ưu tiên.</h1>
+            <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-display)] text-3xl font-medium leading-[1.12] tracking-[-0.03em] sm:text-4xl">Điểm xuất phát đã rõ. Bây giờ chỉ cần chọn đúng ưu tiên.</h1>
             <p className="mt-5 max-w-2xl text-sm leading-7 text-white/55">Mục tiêu bạn chọn: <strong className="text-white/85">{scores.targetGoal}</strong>. Các con số bên dưới là ước tính định hướng cho người trưởng thành, không phải kết luận y khoa.</p>
           </div>
           <div className="relative mx-auto h-40 w-40 shrink-0">

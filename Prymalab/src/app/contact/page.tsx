@@ -13,20 +13,24 @@ export const metadata: Metadata = {
 
 export default async function ContactPage() {
   const { settings } = await getPublicHomeData();
-  const phoneHref = settings.phone.replace(/\D/g, '');
+  const phone = settings.phone || '0948 348 444';
+  const email = settings.email || 'ahunglua7@gmail.com';
+  const address = settings.address || 'Đà Nẵng, Việt Nam';
+  const workingHours = settings.workingHours || 'Thứ Hai – Thứ Bảy, 08:00–18:00';
+  const phoneHref = phone.replace(/\D/g, '');
   return <div className="min-h-screen bg-[#f4f7f2] text-[#153339]">
     <Navigation />
     <main className="mx-auto max-w-[82rem] px-5 pb-24 pt-32 sm:px-8 lg:pt-40">
       <section className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-20">
         <div className="lg:sticky lg:top-32">
           <p className="section-kicker">Liên hệ PrymaLab</p>
-          <h1 className="mt-5 max-w-2xl font-[family-name:var(--font-display)] text-5xl font-semibold leading-[1.03] tracking-[-0.04em] sm:text-6xl">Một cuộc trao đổi rõ ràng trước mọi cam kết.</h1>
-          <p className="mt-6 max-w-xl text-base leading-8 text-[#60767a]">Hãy cho chúng tôi biết mục tiêu và bối cảnh của bạn. PrymaLab sẽ trả lời thẳng về mức độ phù hợp, cách bắt đầu và chi phí — không thúc ép mua.</p>
+          <h1 className="mt-5 max-w-xl font-[family-name:var(--font-display)] text-4xl font-medium tracking-[-0.035em] sm:text-5xl lg:text-6xl">Trao đổi rõ ràng trước mọi cam kết.</h1>
+          <p className="mt-5 max-w-lg text-[15px] leading-7 text-[#60767a]">Chia sẻ mục tiêu và bối cảnh của bạn. PrymaLab sẽ trả lời thẳng về mức độ phù hợp, cách bắt đầu và chi phí.</p>
           <div className="mt-9 grid gap-3">
-            <a href={`tel:${phoneHref}`} className="flex items-center gap-4 rounded-2xl border border-[#dbe4df] bg-white p-4 transition hover:border-[#9bc7bc]"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e7f5f0] text-[#0b8a78]"><Phone className="h-5 w-5" /></span><span><small className="block text-[10px] font-bold uppercase tracking-wider text-[#839497]">Điện thoại</small><strong className="mt-1 block text-sm">{settings.phone}</strong></span></a>
-            <a href={`mailto:${settings.email}`} className="flex items-center gap-4 rounded-2xl border border-[#dbe4df] bg-white p-4 transition hover:border-[#9bc7bc]"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700"><Mail className="h-5 w-5" /></span><span className="min-w-0"><small className="block text-[10px] font-bold uppercase tracking-wider text-[#839497]">Email</small><strong className="mt-1 block truncate text-sm">{settings.email}</strong></span></a>
+            <a href={`tel:${phoneHref}`} className="flex items-center gap-4 rounded-2xl border border-[#dbe4df] bg-white p-4 transition hover:border-[#9bc7bc]"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e7f5f0] text-[#0b8a78]"><Phone className="h-5 w-5" /></span><span><small className="block text-[10px] font-bold uppercase tracking-wider text-[#839497]">Điện thoại</small><strong className="mt-1 block text-sm">{phone}</strong></span></a>
+            <a href={`mailto:${email}`} className="flex items-center gap-4 rounded-2xl border border-[#dbe4df] bg-white p-4 transition hover:border-[#9bc7bc]"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700"><Mail className="h-5 w-5" /></span><span className="min-w-0"><small className="block text-[10px] font-bold uppercase tracking-wider text-[#839497]">Email</small><strong className="mt-1 block truncate text-sm">{email}</strong></span></a>
           </div>
-          <div className="mt-7 space-y-3 border-t border-[#dbe4df] pt-6 text-sm text-[#657a7e]"><p className="flex gap-3"><Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-[#0b8a78]" />{settings.workingHours}</p><p className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0b8a78]" />{settings.address}</p><p className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#0b8a78]" />Phản hồi trong khung giờ làm việc gần nhất.</p></div>
+          <div className="mt-7 space-y-3 border-t border-[#dbe4df] pt-6 text-sm text-[#657a7e]"><p className="flex gap-3"><Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-[#0b8a78]" />{workingHours}</p><p className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0b8a78]" />{address}</p><p className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#0b8a78]" />Phản hồi trong khung giờ làm việc gần nhất.</p></div>
         </div>
         <ContactForm />
       </section>

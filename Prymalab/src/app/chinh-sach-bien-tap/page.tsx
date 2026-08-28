@@ -82,8 +82,8 @@ export default async function EditorialPolicyPage() {
           <div className="absolute -right-40 top-8 -z-10 h-[34rem] w-[34rem] rounded-full bg-[#d8e6ff] blur-[115px]" aria-hidden="true" />
           <div className="mx-auto max-w-5xl">
             <p className="section-kicker">Tiêu chuẩn nội dung</p>
-            <h1 className="mt-6 max-w-5xl font-[family-name:var(--font-display)] text-5xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-6xl lg:text-7xl">Thông tin sức khỏe phải rõ nguồn, rõ giới hạn và có người chịu trách nhiệm.</h1>
-            <p className="mt-7 max-w-3xl text-base leading-8 text-[#5c7378] sm:text-lg">Chính sách này mô tả cách PrymaLab Việt Nam biên soạn nội dung giáo dục về dinh dưỡng, giấc ngủ và nhịp sống. Nội dung không thay thế đánh giá, chẩn đoán hoặc điều trị y khoa.</p>
+            <h1 className="mt-6 max-w-4xl font-[family-name:var(--font-display)] text-4xl font-medium tracking-[-0.035em] sm:text-5xl lg:text-6xl">Thông tin sức khỏe phải rõ nguồn, rõ giới hạn và có người chịu trách nhiệm.</h1>
+            <p className="mt-6 max-w-2xl text-[15px] leading-7 text-[#5c7378]">Cách PrymaLab biên soạn, kiểm chứng và sửa nội dung về dinh dưỡng, giấc ngủ và nhịp sống.</p>
             <p className="mt-6 text-xs font-extrabold uppercase tracking-[0.16em] text-[#0b7f72]">Có hiệu lực từ 19/08/2026 · Phiên bản 1.0</p>
           </div>
         </section>
@@ -104,7 +104,7 @@ export default async function EditorialPolicyPage() {
           <div className="mx-auto grid max-w-5xl gap-14 lg:grid-cols-[0.72fr_1.28fr]">
             <div>
               <p className="section-kicker">Thứ tự ưu tiên nguồn</p>
-              <h2 className="mt-5 font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.08] tracking-[-0.035em]">Nguồn mạnh nhất đứng trước lời kể hay nhất.</h2>
+              <h2 className="mt-5 font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.03em] sm:text-4xl">Nguồn mạnh nhất đứng trước lời kể hay nhất.</h2>
             </div>
             <ol className="space-y-3">
               {sourceOrder.map((item, index) => (
@@ -140,7 +140,7 @@ export default async function EditorialPolicyPage() {
         <section className="px-5 py-24 sm:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl rounded-[2.25rem] border border-[#d8e2dd] bg-white p-8 sm:p-12">
             <p className="section-kicker">Sửa lỗi và phản hồi</p>
-            <h2 className="mt-5 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-[-0.035em]">Phát hiện nội dung chưa chính xác?</h2>
+            <h2 className="mt-5 font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.03em] sm:text-4xl">Phát hiện nội dung chưa chính xác?</h2>
             <p className="mt-5 max-w-3xl text-sm leading-7 text-[#5d7478]">Gửi URL, đoạn cần kiểm tra và nguồn đối chiếu tới <a className="font-bold text-[#0b7f72] underline underline-offset-4" href={`mailto:${settings.email}`}>{settings.email}</a>. PrymaLab sẽ kiểm tra, sửa phần sai và cập nhật ngày khi có thay đổi nội dung thực sự.</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#153339] px-6 text-sm font-bold text-white">Báo lỗi nội dung <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>

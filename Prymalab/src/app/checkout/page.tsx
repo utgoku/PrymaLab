@@ -133,7 +133,7 @@ function CheckoutContent() {
               <CheckCircle2 className="h-8 w-8" aria-hidden="true" />
             </span>
             <p className="mt-6 text-xs font-extrabold uppercase tracking-[0.18em] text-[#0b7f72]">Đơn {result.order.orderCode}</p>
-            <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.06] tracking-[-0.04em] sm:text-5xl">
+            <h1 className="mt-4 font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.03em] sm:text-4xl">
               {result.payment.ready ? 'Quét mã để hoàn tất chuyển khoản.' : 'Đơn của bạn đã được ghi nhận.'}
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#657a7e]">
@@ -213,7 +213,7 @@ function CheckoutContent() {
       <main className="mx-auto max-w-[82rem] px-5 pb-24 pt-32 sm:px-8 lg:pt-40">
         <div className="mb-10 max-w-3xl">
           <p className="section-kicker">Thanh toán chuyển khoản</p>
-          <h1 className="mt-5 font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.06] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Một đơn rõ ràng. Một mã chuyển khoản riêng.</h1>
+          <h1 className="mt-5 font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.03em] sm:text-4xl lg:text-5xl">Một đơn rõ ràng. Một mã chuyển khoản riêng.</h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-[#657a7e]">Điền thông tin để tạo mã đơn. PrymaLab không yêu cầu số thẻ và chỉ ghi nhận thanh toán sau khi giao dịch ngân hàng được đối soát.</p>
         </div>
 

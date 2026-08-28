@@ -28,7 +28,7 @@ export default async function PrivacyPage() {
       <Navigation />
       <main className="mx-auto max-w-4xl px-5 pb-24 pt-36 sm:px-8 lg:pt-44">
         <p className="section-kicker">Pháp lý & dữ liệu</p>
-        <h1 className="mt-6 font-[family-name:var(--font-display)] text-5xl font-semibold tracking-[-0.04em] sm:text-6xl">Chính sách bảo mật</h1>
+        <h1 className="mt-6 font-[family-name:var(--font-display)] text-4xl font-medium tracking-[-0.035em] sm:text-5xl">Chính sách bảo mật</h1>
         <p className="mt-5 text-sm text-[#73878b]">Cập nhật: 28/08/2026</p>
         <div className="mt-10 rounded-[2rem] border border-[#dce5e0] bg-white p-7 sm:p-10">
           <p className="text-base leading-8 text-[#566f73]">PrymaLab tôn trọng quyền riêng tư và áp dụng nguyên tắc thu thập vừa đủ, dùng đúng mục đích và minh bạch với người dùng. Chính sách này áp dụng cho prymalab.com và các biểu mẫu liên quan.</p>

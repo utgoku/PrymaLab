@@ -89,9 +89,13 @@
 
   body {
     font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.65;
     background-color: #f6f8f4;
-    color: #153339;
+    color: #23484d;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    font-synthesis: none;
   }
 
   ::selection {
@@ -202,7 +206,7 @@
     color: #0b7f72;
     font-size: 0.7rem;
     font-weight: 800;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
     line-height: 1;
     text-transform: uppercase;
   }
@@ -221,6 +225,8 @@
   h1[class*="font-[family-name:var(--font-display)]"],
   h2[class*="font-[family-name:var(--font-display)]"] {
     line-height: 1.14 !important;
+    font-weight: 500 !important;
+    font-optical-sizing: auto;
     text-wrap: balance;
   }
 
