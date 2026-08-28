@@ -82,7 +82,7 @@ export async function recordGrowthEvent(input: GrowthEventInput) {
   });
 
   // Analytics must never interrupt the visitor's primary action.
-  if (error && !/analytics_events/i.test(error.message)) {
+  if (error) {
     console.error('Growth analytics insert failed:', error.message);
   }
 }

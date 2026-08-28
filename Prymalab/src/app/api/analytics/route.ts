@@ -26,8 +26,9 @@ export async function POST(request: Request) {
       metadata: body.metadata,
     });
     return new NextResponse(null, { status: 204 });
-  } catch {
+  } catch (error) {
     // Analytics is best-effort and should remain invisible to visitors.
+    console.error('Growth analytics request failed:', error instanceof Error ? error.message : 'Unknown error');
     return new NextResponse(null, { status: 204 });
   }
 }
