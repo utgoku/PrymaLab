@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { knowledgeArticles } from '@/lib/editorial';
 
 const siteUrl = 'https://prymalab.com';
-const updatedAt = new Date('2026-08-19T00:00:00+07:00');
+const updatedAt = new Date('2026-08-28T00:00:00+07:00');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [

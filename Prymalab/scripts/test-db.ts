@@ -1,14 +1,17 @@
+import 'dotenv/config';
 import { Client } from 'pg';
 
 async function testConnection(region: string) {
-  const host = `aws-0-${region}.pooler.supabase.com`;
+  const password = process.env.SUPABASE_DB_PASSWORD;
+  if (!password) throw new Error('Missing SUPABASE_DB_PASSWORD.');
+  const host = process.env.SUPABASE_DB_HOST || `aws-0-${region}.pooler.supabase.com`;
   console.log(`Trying ${host}...`);
   const client = new Client({
     host,
-    port: 6543,
-    database: 'postgres',
-    user: 'postgres.esiqaqzmgtfyzfhrfgna',
-    password: 'Ahunglua68@',
+    port: Number(process.env.SUPABASE_DB_PORT || 6543),
+    database: process.env.SUPABASE_DB_NAME || 'postgres',
+    user: process.env.SUPABASE_DB_USER || 'postgres.esiqaqzmgtfyzfhrfgna',
+    password,
     ssl: { rejectUnauthorized: false },
     connectionTimeoutMillis: 5000
   });
@@ -18,8 +21,9 @@ async function testConnection(region: string) {
     console.log(`Connected successfully to ${region}!`);
     await client.end();
     return true;
-  } catch (error: any) {
-    console.log(`Failed to connect to ${region}: ${error.message}`);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown connection error';
+    console.log(`Failed to connect to ${region}: ${message}`);
     return false;
   }
 }

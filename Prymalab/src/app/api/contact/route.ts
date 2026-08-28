@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { addContact } from '@/lib/db';
 import { allowRequest, requestIp } from '@/lib/rate-limit';
+import { analyticsContextFromBody, recordGrowthEvent } from '@/lib/growth-analytics';
 
 function clean(value: unknown, max: number) {
   return typeof value === 'string' ? value.trim().slice(0, max) : '';
@@ -22,6 +23,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Vui lòng kiểm tra họ tên, email và nội dung.' }, { status: 400 });
     }
     await addContact({ name, email, phone, subject: subject || 'Liên hệ từ website', message });
+    await recordGrowthEvent({ eventName: 'contact_submitted', path: '/contact', ...analyticsContextFromBody(body._analytics), metadata: { subject: subject || 'Liên hệ từ website' } }).catch(() => undefined);
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error('Public contact submission failed:', error);

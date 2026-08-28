@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/lib/auth-context';
+import GrowthAnalytics from '@/components/analytics/GrowthAnalytics';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 const inter = Inter({
@@ -89,6 +90,7 @@ export default function RootLayout({
     <html lang="vi">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         <AuthProvider>
+          <GrowthAnalytics />
           {children}
         </AuthProvider>
       </body>

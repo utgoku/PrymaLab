@@ -20,6 +20,7 @@ import {
 import { Navigation } from '@/components/ui/Navigation';
 import { Footer } from '@/components/ui/Footer';
 import { SERVICE_PACKAGES } from '@/lib/constants';
+import { getBrowserAnalyticsContext } from '@/components/analytics/GrowthAnalytics';
 
 interface CheckoutResult {
   order: {
@@ -88,6 +89,7 @@ function CheckoutContent() {
           customerNote: form.note,
           website: form.website,
           consent: form.consent,
+          _analytics: getBrowserAnalyticsContext(),
         }),
       });
       const data = await response.json().catch(() => ({}));
@@ -109,7 +111,7 @@ function CheckoutContent() {
       const response = await fetch('/api/checkout', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderCode: result.order.orderCode, phone: result.order.customerPhone }),
+        body: JSON.stringify({ orderCode: result.order.orderCode, phone: result.order.customerPhone, _analytics: getBrowserAnalyticsContext() }),
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || 'Chưa gửi được xác nhận.');
@@ -180,7 +182,7 @@ function CheckoutContent() {
                     PrymaLab sẽ kiểm tra giao dịch và liên hệ để bắt đầu chương trình.
                   </div>
                 ) : (
-                  <button type="button" onClick={markPaymentSubmitted} disabled={isMarkingPayment} className="mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-[#153339] px-6 text-sm font-bold text-white transition hover:bg-[#0b7f72] disabled:opacity-60">
+                  <button data-analytics="payment-submitted" type="button" onClick={markPaymentSubmitted} disabled={isMarkingPayment} className="mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-[#153339] px-6 text-sm font-bold text-white transition hover:bg-[#0b7f72] disabled:opacity-60">
                     <ReceiptText className="h-4 w-4" /> {isMarkingPayment ? 'Đang gửi xác nhận...' : 'Tôi đã chuyển khoản — yêu cầu kiểm tra'}
                   </button>
                 )}
@@ -248,7 +250,7 @@ function CheckoutContent() {
               <label className="block text-sm font-bold text-[#36545a]">Email<input required type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} className="mt-2 min-h-12 w-full rounded-xl border border-[#d4dfda] bg-[#fbfcfa] px-4 font-normal outline-none transition focus:border-[#0b8a78] focus:bg-white" placeholder="ban@email.com" /></label>
               <label className="block text-sm font-bold text-[#36545a]">Điều bạn muốn PrymaLab hiểu thêm <span className="font-normal text-[#869699]">(không bắt buộc)</span><textarea value={form.note} onChange={(event) => setForm({ ...form, note: event.target.value })} className="mt-2 min-h-28 w-full resize-y rounded-xl border border-[#d4dfda] bg-[#fbfcfa] px-4 py-3 font-normal leading-6 outline-none transition focus:border-[#0b8a78] focus:bg-white" placeholder="Mục tiêu, lịch sinh hoạt hoặc điều bạn đang gặp khó khăn..." /></label>
               <label className="flex gap-3 rounded-2xl bg-[#f3f6f1] p-4 text-xs leading-5 text-[#667b7f]"><input required type="checkbox" checked={form.consent} onChange={(event) => setForm({ ...form, consent: event.target.checked })} className="mt-0.5 h-4 w-4 accent-[#0b8a78]" /><span>Tôi đồng ý để PrymaLab xử lý thông tin nhằm tạo đơn và liên hệ triển khai; tôi đã đọc <Link href="/privacy" className="font-bold text-[#0b7f72] underline">Chính sách bảo mật</Link>.</span></label>
-              <button disabled={isSubmitting} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#153339] px-7 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#0b7f72] disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? 'Đang tạo mã đơn...' : 'Tạo mã chuyển khoản'} <ArrowRight className="h-4 w-4" /></button>
+              <button data-analytics="checkout-submit" disabled={isSubmitting} className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#153339] px-7 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#0b7f72] disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? 'Đang tạo mã đơn...' : 'Tạo mã chuyển khoản'} <ArrowRight className="h-4 w-4" /></button>
             </form>
           </section>
         </div>

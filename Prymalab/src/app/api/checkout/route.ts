@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { SERVICE_PACKAGES } from '@/lib/constants';
 import { addOrder, getPaymentSettings, markOrderPaymentSubmitted, type SiteSettings } from '@/lib/db';
 import { allowRequest, requestIp } from '@/lib/rate-limit';
+import { analyticsContextFromBody, recordGrowthEvent } from '@/lib/growth-analytics';
 
 const PACKAGE_ALIASES: Record<string, string> = {
   starter: 'starter',
@@ -85,6 +86,7 @@ export async function POST(request: Request) {
       customerNote,
       amount: selectedPackage.price,
     });
+    await recordGrowthEvent({ eventName: 'order_created', path: '/checkout', ...analyticsContextFromBody(body._analytics), metadata: { package: selectedPackage.slug, amount: selectedPackage.price } }).catch(() => undefined);
     return NextResponse.json({
       success: true,
       order: {
@@ -113,6 +115,7 @@ export async function PATCH(request: Request) {
     if (!orderCode || !phone) return NextResponse.json({ error: 'Thiếu thông tin xác nhận.' }, { status: 400 });
     const matched = await markOrderPaymentSubmitted(orderCode, phone);
     if (!matched) return NextResponse.json({ error: 'Không thể xác minh đơn. Vui lòng kiểm tra mã đơn.' }, { status: 404 });
+    await recordGrowthEvent({ eventName: 'payment_submitted', path: '/checkout', ...analyticsContextFromBody(body._analytics) }).catch(() => undefined);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Payment review submission failed:', error);

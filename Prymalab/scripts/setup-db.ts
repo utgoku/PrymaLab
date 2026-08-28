@@ -1,14 +1,17 @@
+import 'dotenv/config';
 import { Client } from 'pg';
 import * as fs from 'fs';
 import * as path from 'path';
 
 async function applyMigrations() {
+  const password = process.env.SUPABASE_DB_PASSWORD;
+  if (!password) throw new Error('Missing SUPABASE_DB_PASSWORD. Add it to .env.local before applying migrations.');
   const client = new Client({
-    host: 'aws-0-ap-southeast-2.pooler.supabase.com',
-    port: 6543,
-    database: 'postgres',
-    user: 'postgres.esiqaqzmgtfyzfhrfgna',
-    password: 'Ahunglua68@',
+    host: process.env.SUPABASE_DB_HOST || 'aws-0-ap-southeast-2.pooler.supabase.com',
+    port: Number(process.env.SUPABASE_DB_PORT || 6543),
+    database: process.env.SUPABASE_DB_NAME || 'postgres',
+    user: process.env.SUPABASE_DB_USER || 'postgres.esiqaqzmgtfyzfhrfgna',
+    password,
     ssl: { rejectUnauthorized: false }
   });
 
@@ -29,6 +32,7 @@ async function applyMigrations() {
     }
   } catch (error) {
     console.error('Error applying migrations:', error);
+    process.exitCode = 1;
   } finally {
     await client.end();
     console.log('Disconnected.');

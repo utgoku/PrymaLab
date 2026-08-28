@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { getBrowserAnalyticsContext } from '@/components/analytics/GrowthAnalytics';
 
 export function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: 'Tư vấn chương trình', message: '', website: '' });
@@ -13,7 +14,7 @@ export function ContactForm() {
     setState('submitting');
     setError('');
     try {
-      const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
+      const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...form, _analytics: getBrowserAnalyticsContext() }) });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || 'Chưa thể gửi yêu cầu.');
       setState('success');
@@ -36,6 +37,6 @@ export function ContactForm() {
     <label className="mt-5 block text-sm font-bold text-[#36545a]">Email<input required type="email" className={inputClass} value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} /></label>
     <label className="mt-5 block text-sm font-bold text-[#36545a]">Chủ đề<select className={inputClass} value={form.subject} onChange={(event) => setForm({ ...form, subject: event.target.value })}><option>Tư vấn chương trình</option><option>Hỗ trợ đơn hàng</option><option>Hợp tác nội dung</option><option>Góp ý khác</option></select></label>
     <label className="mt-5 block text-sm font-bold text-[#36545a]">Lời nhắn<textarea required minLength={10} className={`${inputClass} min-h-32 py-3`} value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} placeholder="Mục tiêu, lịch sinh hoạt hoặc điều bạn muốn được giải đáp..." /></label>
-    <button disabled={state === 'submitting'} className="mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-[#153339] px-6 text-sm font-bold text-white transition hover:bg-[#0b7f72] disabled:opacity-60">{state === 'submitting' ? 'Đang gửi...' : 'Gửi lời nhắn'} <ArrowRight className="h-4 w-4" /></button>
+    <button data-analytics="contact-submit" disabled={state === 'submitting'} className="mt-6 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-[#153339] px-6 text-sm font-bold text-white transition hover:bg-[#0b7f72] disabled:opacity-60">{state === 'submitting' ? 'Đang gửi...' : 'Gửi lời nhắn'} <ArrowRight className="h-4 w-4" /></button>
   </form>;
 }

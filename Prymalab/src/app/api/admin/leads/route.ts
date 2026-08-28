@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { addLead, updateLead } from '@/lib/db';
 import { hasAdminSession } from '@/lib/admin-session';
 import { allowRequest, requestIp } from '@/lib/rate-limit';
+import { analyticsContextFromBody, recordGrowthEvent } from '@/lib/growth-analytics';
 
 export async function POST(request: Request) {
   try {
@@ -35,6 +36,8 @@ export async function POST(request: Request) {
       sleepCategory: typeof data.sleepCategory === 'string' ? data.sleepCategory.slice(0, 100) : '',
       goals: typeof data.goals === 'string' ? data.goals.slice(0, 120) : '',
     });
+
+    await recordGrowthEvent({ eventName: 'lead_submitted', path: '/quiz', ...analyticsContextFromBody(data._analytics), metadata: { goal: typeof data.goals === 'string' ? data.goals.slice(0, 120) : '' } }).catch(() => undefined);
 
     return NextResponse.json({ success: true, lead }, { status: 201 });
   } catch (error) {

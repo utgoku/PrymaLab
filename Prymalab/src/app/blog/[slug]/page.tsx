@@ -21,11 +21,11 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   if (!article) return { title: 'Không tìm thấy bài viết', robots: { index: false, follow: false } };
 
   return {
-    title: article.title,
+    title: { absolute: `${article.metaTitle} | PrymaLab` },
     description: article.description,
     alternates: { canonical: '/blog/' + article.slug },
     openGraph: {
-      title: article.title,
+      title: article.metaTitle,
       description: article.description,
       url: '/blog/' + article.slug,
       type: 'article',
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       authors: ['PrymaLab'],
       images: [{ url: article.image, alt: article.imageAlt }],
     },
-    twitter: { card: 'summary_large_image', title: article.title, description: article.description, images: [article.image] },
+    twitter: { card: 'summary_large_image', title: article.metaTitle, description: article.description, images: [article.image] },
   };
 }
 

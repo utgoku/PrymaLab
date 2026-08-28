@@ -13,6 +13,7 @@ export interface EditorialSection {
 export interface KnowledgeArticle {
   slug: string;
   title: string;
+  metaTitle: string;
   description: string;
   directAnswer: string;
   category: 'Giấc ngủ' | 'Dinh dưỡng' | 'Nhịp sống';
@@ -32,6 +33,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'cai-thien-chat-luong-giac-ngu',
     title: 'Cải thiện chất lượng giấc ngủ: bắt đầu từ 4 điểm có thể đo',
+    metaTitle: 'Cải thiện giấc ngủ: 4 điểm cần theo dõi',
     description: 'Cách theo dõi và cải thiện giấc ngủ bằng thời lượng, giờ thức dậy, môi trường ngủ và tín hiệu ban ngày, không chạy theo một chỉ số duy nhất.',
     directAnswer: 'Để cải thiện chất lượng giấc ngủ, hãy bảo vệ đủ thời gian ngủ, giữ giờ thức dậy tương đối ổn định, giảm các tín hiệu gây tỉnh táo vào buổi tối và theo dõi cảm giác ban ngày trong ít nhất 7 ngày. Một đêm tốt hay xấu chưa đủ để kết luận xu hướng.',
     category: 'Giấc ngủ',
@@ -97,6 +99,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'dinh-duong-va-giac-ngu',
     title: 'Dinh dưỡng và giấc ngủ: xây nhịp ăn để buổi tối nhẹ hơn',
+    metaTitle: 'Dinh dưỡng và giấc ngủ: nhịp ăn tối ưu',
     description: 'Mối liên hệ thực hành giữa giờ ăn, caffeine, bữa tối và giấc ngủ; cách thử nghiệm thay đổi an toàn trong đời sống hằng ngày.',
     directAnswer: 'Dinh dưỡng hỗ trợ giấc ngủ tốt nhất khi tạo được nhịp ổn định: ăn đủ trong ngày, tránh bữa quá nặng sát giờ ngủ, quan sát thời điểm dùng caffeine và không dùng rượu như một “thuốc ngủ”. Không có một thực phẩm đơn lẻ nào bảo đảm ngủ ngon cho mọi người.',
     category: 'Dinh dưỡng',
@@ -163,6 +166,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'tdee-la-gi-cach-uoc-tinh',
     title: 'TDEE là gì? Cách ước tính mà không thần thánh hóa con số',
+    metaTitle: 'TDEE là gì? Cách ước tính nhu cầu năng lượng',
     description: 'Giải thích BMR, TDEE, phương trình Mifflin–St Jeor, hệ số vận động và cách dùng khoảng ước tính an toàn hơn một con số tuyệt đối.',
     directAnswer: 'TDEE là ước tính tổng năng lượng cơ thể sử dụng trong một ngày. Con số thường được tính từ năng lượng nghỉ ước tính rồi nhân với hệ số vận động; đây là điểm khởi đầu để quan sát, không phải phép đo chính xác hay đơn ăn cá nhân.',
     category: 'Dinh dưỡng',
@@ -220,6 +224,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'sleep-hygiene-la-gi',
     title: 'Sleep hygiene là gì? Checklist vệ sinh giấc ngủ có thể bắt đầu tối nay',
+    metaTitle: 'Sleep hygiene là gì? 7 nguyên tắc dễ áp dụng',
     description: 'Giải thích sleep hygiene, những thói quen cốt lõi và checklist 7 ngày giúp bạn tạo điều kiện ngủ ổn định hơn mà không biến buổi tối thành một nghi thức nặng nề.',
     directAnswer: 'Sleep hygiene, hay vệ sinh giấc ngủ, là tập hợp thói quen ban ngày, routine buổi tối và điều kiện phòng ngủ giúp tạo cơ hội cho giấc ngủ đều và phục hồi hơn. Đây là nền tảng hỗ trợ giấc ngủ, không phải phương pháp chẩn đoán hoặc điều trị mọi nguyên nhân gây mất ngủ.',
     category: 'Giấc ngủ',
@@ -284,6 +289,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'caffeine-anh-huong-giac-ngu-bao-lau',
     title: 'Caffeine ảnh hưởng giấc ngủ bao lâu? Cách tìm giờ cắt caffeine phù hợp',
+    metaTitle: 'Caffeine ảnh hưởng giấc ngủ bao lâu?',
     description: 'Caffeine có thể tác động nhiều giờ sau khi uống. Tìm hiểu bằng chứng về mốc 6–8 giờ và cách thử nghiệm giờ cắt caffeine theo phản hồi thực tế.',
     directAnswer: 'Caffeine có thể tiếp tục ảnh hưởng giấc ngủ nhiều giờ sau khi dùng; NHLBI lưu ý tác động có thể kéo dài tới khoảng 8 giờ ở một số người. Một nghiên cứu với liều 400 mg ghi nhận giấc ngủ bị ảnh hưởng ngay cả khi caffeine được dùng trước giờ ngủ 6 giờ, nhưng mức tác động thực tế còn phụ thuộc liều, cơ địa và thói quen sử dụng.',
     category: 'Dinh dưỡng',
@@ -338,6 +344,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'nhip-sinh-hoc-la-gi',
     title: 'Nhịp sinh học là gì? Cách ánh sáng, giờ ngủ và bữa ăn tạo nhịp 24 giờ',
+    metaTitle: 'Nhịp sinh học là gì? 3 điểm neo mỗi ngày',
     description: 'Giải thích nhịp sinh học, đồng hồ sinh học trung tâm và vai trò của ánh sáng, giờ thức dậy, vận động cùng bữa ăn trong nhịp sống hằng ngày.',
     directAnswer: 'Nhịp sinh học là những thay đổi thể chất, tinh thần và hành vi lặp lại theo chu kỳ khoảng 24 giờ. Ánh sáng và bóng tối là tín hiệu mạnh nhất, trong khi giờ ăn, vận động, căng thẳng và môi trường xã hội cũng góp phần điều chỉnh nhịp của cơ thể.',
     category: 'Nhịp sống',

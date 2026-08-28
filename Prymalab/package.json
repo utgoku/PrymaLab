@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seo:indexnow": "node scripts/submit-indexnow.mjs"
+    "seo:indexnow": "node scripts/submit-indexnow.mjs",
+    "seo:audit": "node scripts/audit-seo.mjs",
+    "db:migrate": "node --env-file=.env.local scripts/apply-migrations.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",

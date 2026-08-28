@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, Clock3, Leaf, LockKeyhole, Moon, Sparkles } from 'lucide-react';
 import QuizResult, { type QuizResults } from './QuizResult';
 import {
@@ -16,6 +16,7 @@ import {
   getBMICategory,
   getSleepScoreCategory,
 } from '@/lib/quiz-scoring';
+import { getBrowserAnalyticsContext, trackGrowthEvent } from '@/components/analytics/GrowthAnalytics';
 
 type Answers = {
   fullName: string;
@@ -63,6 +64,7 @@ function StepTitle({ eyebrow, title, copy }: { eyebrow: string; title: string; c
 }
 
 export default function QuizEngine() {
+  const hasTrackedStart = useRef(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -115,6 +117,10 @@ export default function QuizEngine() {
       setError(message);
       return;
     }
+    if (!hasTrackedStart.current) {
+      hasTrackedStart.current = true;
+      trackGrowthEvent('quiz_started');
+    }
     if (currentStep < stepNames.length - 1) setCurrentStep((step) => step + 1);
     else void submit();
   };
@@ -160,6 +166,7 @@ export default function QuizEngine() {
           sleepCategory,
           goals: answers.targetGoal,
           consent: true,
+          _analytics: getBrowserAnalyticsContext(),
         }),
       });
       if (!response.ok) console.warn('Lead capture was not accepted.');
@@ -171,7 +178,7 @@ export default function QuizEngine() {
     setIsSubmitting(false);
   };
 
-  if (results) return <QuizResult scores={results} onRestart={() => { setResults(null); setCurrentStep(0); }} />;
+  if (results) return <QuizResult scores={results} onRestart={() => { setResults(null); setCurrentStep(0); hasTrackedStart.current = false; }} />;
 
   const progress = ((currentStep + 1) / stepNames.length) * 100;
 

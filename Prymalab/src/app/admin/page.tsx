@@ -25,8 +25,9 @@ import { BrandMark } from '@/components/ui/BrandMark';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
+import GrowthAnalyticsPanel from '@/components/admin/GrowthAnalyticsPanel';
 
-type Tab = 'overview' | 'orders' | 'leads' | 'contacts' | 'settings' | 'packages';
+type Tab = 'overview' | 'analytics' | 'orders' | 'leads' | 'contacts' | 'settings' | 'packages';
 
 const ORDER_LABELS: Record<string, string> = {
   awaiting_payment: 'Chờ thanh toán',
@@ -192,6 +193,7 @@ export default function AdminDashboard() {
 
   const navItems = [
     { id: 'overview', label: 'Tổng quan', icon: LayoutDashboard },
+    { id: 'analytics', label: 'Tăng trưởng', icon: BarChart3 },
     { id: 'orders', label: 'Đơn & thanh toán', icon: ClipboardList, count: db?.orders?.length },
     { id: 'leads', label: 'Leads từ Quiz', icon: Users, count: db?.leads?.length },
     { id: 'contacts', label: 'Hộp thư', icon: Inbox, count: db?.contacts?.length },
@@ -239,6 +241,8 @@ export default function AdminDashboard() {
             </div>
           </div>
         )}
+
+        {db && activeTab === 'analytics' && <GrowthAnalyticsPanel />}
 
         {db && ['orders', 'leads', 'contacts'].includes(activeTab) && (
           <div className="space-y-5">
