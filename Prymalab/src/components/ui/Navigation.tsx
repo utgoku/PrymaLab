@@ -46,7 +46,7 @@ export function Navigation() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative py-2 text-[13px] font-semibold transition-colors ${isActive ? 'text-[#0b7f72]' : 'text-[#526a6f] hover:text-[#0b7f72]'}`}
+                  className={`relative py-2 text-sm font-semibold transition-colors ${isActive ? 'text-[#0b7f72]' : 'text-[#526a6f] hover:text-[#0b7f72]'}`}
                 >
                   {link.name}
                   <span className={`absolute inset-x-0 -bottom-1 mx-auto h-0.5 rounded-full bg-[#0b8a78] transition-all ${isActive ? 'w-5' : 'w-0'}`} />
@@ -56,10 +56,10 @@ export function Navigation() {
           </div>
 
           <div className="hidden shrink-0 items-center gap-3 lg:flex">
-            <Link href="/contact" className="inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-[#0b8a78] px-5 text-xs font-bold text-[#0b7f72] transition hover:bg-white/70">
+            <Link href="/contact" className="inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-[#0b8a78] px-5 text-sm font-bold text-[#0b7f72] transition hover:bg-white/70">
               Trao đổi trước
             </Link>
-            <Link href="/quiz" className="inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#153339] px-5 text-xs font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#0b7f72]">
+            <Link href="/quiz" className="inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#153339] px-5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#0b7f72]">
               Đánh giá miễn phí
             </Link>
           </div>

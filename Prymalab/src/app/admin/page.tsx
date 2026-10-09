@@ -4,6 +4,7 @@
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import {
   BarChart3,
+  FilePenLine,
   CheckCircle2,
   CircleDollarSign,
   ClipboardList,
@@ -26,8 +27,9 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import GrowthAnalyticsPanel from '@/components/admin/GrowthAnalyticsPanel';
+import ArticleManager from '@/components/admin/ArticleManager';
 
-type Tab = 'overview' | 'analytics' | 'orders' | 'leads' | 'contacts' | 'settings' | 'packages';
+type Tab = 'overview' | 'analytics' | 'orders' | 'leads' | 'contacts' | 'settings' | 'packages' | 'articles';
 
 const ORDER_LABELS: Record<string, string> = {
   awaiting_payment: 'Chờ thanh toán',
@@ -177,9 +179,9 @@ export default function AdminDashboard() {
         <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-[#dce4ff] blur-[110px]" />
         <Card className="relative w-full max-w-md rounded-[2rem] border border-white bg-white/90 p-8 shadow-[0_40px_100px_-55px_rgba(18,56,62,0.65)] backdrop-blur sm:p-10">
           <BrandMark className="mb-10" />
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#0b7f72]">PrymaLab Command Center</p>
-          <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#153339]">Quản trị tăng trưởng</h1>
-          <p className="mt-3 text-sm leading-6 text-[#718589]">Đơn hàng, đối soát, khách hàng tiềm năng và cấu hình website trong một nơi.</p>
+          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#0b7f72]">Quản trị PrymaLab</p>
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-semibold text-[#153339]">Quản trị website</h1>
+          <p className="mt-3 text-sm leading-6 text-[#718589]">Viết bài, quản lý chương trình, đơn hàng và lời nhắn khách hàng.</p>
           {!isAdminConfigured && <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-4 text-xs leading-5 text-amber-800">CRM đang khóa vì máy chủ chưa có biến môi trường quản trị.</div>}
           {loginError && <div className="mt-6 rounded-xl border border-red-100 bg-red-50 p-4 text-xs leading-5 text-red-700">{loginError}</div>}
           <form onSubmit={handleLogin} className="mt-7 space-y-4">
@@ -193,9 +195,10 @@ export default function AdminDashboard() {
 
   const navItems = [
     { id: 'overview', label: 'Tổng quan', icon: LayoutDashboard },
+    { id: 'articles', label: 'Bài viết', icon: FilePenLine },
     { id: 'analytics', label: 'Tăng trưởng', icon: BarChart3 },
     { id: 'orders', label: 'Đơn & thanh toán', icon: ClipboardList, count: db?.orders?.length },
-    { id: 'leads', label: 'Leads từ Quiz', icon: Users, count: db?.leads?.length },
+    { id: 'leads', label: 'Khách từ đánh giá', icon: Users, count: db?.leads?.length },
     { id: 'contacts', label: 'Hộp thư', icon: Inbox, count: db?.contacts?.length },
     { id: 'settings', label: 'Cấu hình', icon: Settings },
     { id: 'packages', label: 'Chương trình', icon: Package },
@@ -205,7 +208,7 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-[#f3f6f2] text-[#18373d] lg:flex">
       <aside className="border-b border-[#dbe4df] bg-[#102f35] p-5 text-white lg:fixed lg:inset-y-0 lg:w-72 lg:border-b-0 lg:p-6">
         <BrandMark inverse />
-        <p className="mt-3 pl-[3.8rem] text-[9px] font-bold uppercase tracking-[0.18em] text-white/35">Command Center</p>
+        <p className="mt-3 pl-[3.8rem] text-[9px] font-bold uppercase tracking-[0.18em] text-white/35">Quản trị website</p>
         <nav className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-1">
           {navItems.map((item) => (
             <button key={item.id} type="button" onClick={() => { setActiveTab(item.id); setSearch(''); }} className={`flex min-h-11 items-center gap-3 rounded-xl px-3.5 text-left text-xs font-bold transition ${activeTab === item.id ? 'bg-[#d9f46f] text-[#153339]' : 'text-white/60 hover:bg-white/[0.07] hover:text-white'}`}>
@@ -241,6 +244,8 @@ export default function AdminDashboard() {
             </div>
           </div>
         )}
+
+        <div hidden={activeTab !== 'articles'}><ArticleManager /></div>
 
         {db && activeTab === 'analytics' && <GrowthAnalyticsPanel />}
 

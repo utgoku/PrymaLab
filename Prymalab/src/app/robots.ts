@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'GPTBot', disallow: '/' },
       { userAgent: 'ClaudeBot', disallow: '/' },
     ],
-    sitemap: 'https://prymalab.com/sitemap.xml',
-    host: 'https://prymalab.com',
+    sitemap: 'https://www.prymalab.com/sitemap.xml',
+    host: 'https://www.prymalab.com',
   };
 }

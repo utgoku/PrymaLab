@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import HomeExperience, { faqs } from '@/components/home/HomeExperience';
 import { getPublicHomeData } from '@/lib/db';
+import { getPublishedArticles } from '@/lib/articles';
 import { SITE_ALTERNATE_NAMES, SITE_FOUNDER_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -11,8 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
-  const { packages, settings } = await getPublicHomeData();
+  const [{ packages, settings }, articles] = await Promise.all([getPublicHomeData(), getPublishedArticles().catch(() => [])]);
   const telephone = settings.phone.replace(/\s+/g, '').replace(/^0/, '+84');
 
   const structuredData = {
@@ -99,7 +102,7 @@ export default async function HomePage() {
           __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
         }}
       />
-      <HomeExperience packages={packages} settings={settings} />
+      <HomeExperience articles={articles} packages={packages} settings={settings} />
     </>
   );
 }

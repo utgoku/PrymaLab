@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AppError, ErrorCode, createApiErrorResponse } from '@/lib/errors';
 import { UserProfile, ApiResponse, TargetGoal } from '@/types';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const mockProfile: UserProfile = {
       id: 'demo-user-id',
@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
   try {
-    const body = await req.json() as any;
+    const body: Partial<UserProfile> = await req.json();
     const { age, weightKg, heightCm } = body;
 
     if (age !== undefined && age <= 0) {

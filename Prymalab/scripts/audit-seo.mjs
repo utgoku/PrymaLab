@@ -1,4 +1,4 @@
-const baseUrl = new URL(process.argv[2] || process.env.SEO_BASE_URL || 'https://prymalab.com');
+const baseUrl = new URL(process.argv[2] || process.env.SEO_BASE_URL || 'https://www.prymalab.com');
 const failures = [];
 const warnings = [];
 
@@ -33,7 +33,7 @@ async function main() {
 
   const robots = await get('/robots.txt');
   check(robots.response.ok, `robots.txt trả ${robots.response.status}`);
-  check(/sitemap:\s*https:\/\/prymalab\.com\/sitemap\.xml/i.test(robots.text), 'robots.txt thiếu sitemap canonical');
+  check(/sitemap:\s*https:\/\/www\.prymalab\.com\/sitemap\.xml/i.test(robots.text), 'robots.txt thiếu sitemap canonical');
   check(/user-agent:\s*OAI-SearchBot[\s\S]*?allow:\s*\//i.test(robots.text), 'OAI-SearchBot chưa được allow', 'warning');
   check(/user-agent:\s*GPTBot[\s\S]*?disallow:\s*\//i.test(robots.text), 'Chính sách training GPTBot chưa rõ', 'warning');
 

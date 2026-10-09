@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { UserRole } from '@/types';
@@ -15,7 +15,8 @@ export function AuthGuard({ children, allowedRoles, fallbackUrl = '/login' }: Au
   const { isAuthenticated, isLoading, user } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
-  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
+  const isAuthorized = isAuthenticated && Boolean(user)
+    && (!allowedRoles?.length || allowedRoles.includes(user!.role));
 
   useEffect(() => {
     if (isLoading) return;
@@ -32,10 +33,9 @@ export function AuthGuard({ children, allowedRoles, fallbackUrl = '/login' }: Au
       }
     }
 
-    setIsAuthorized(true);
   }, [isAuthenticated, isLoading, user, router, pathname, allowedRoles, fallbackUrl]);
 
-  if (isLoading || isAuthorized === null) {
+  if (isLoading || !isAuthorized) {
     return (
       <div className="min-h-[50vh] flex items-center justify-center">
         <div className="flex flex-col items-center">

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { AppError, ErrorCode, createApiErrorResponse } from '@/lib/errors';
-import { calculateBMI, calculateBMR, calculateTDEE, calculateSleepScore, generateHealthRecommendations, QuizScoreResult } from '@/lib/quiz-scoring';
+import { calculateBMI, calculateBMR, calculateTDEE, calculateSleepScore, QuizScoreResult } from '@/lib/quiz-scoring';
 import { ApiResponse } from '@/types';
 
 export async function POST(req: NextRequest) {
@@ -31,17 +31,6 @@ export async function POST(req: NextRequest) {
       consistentSchedule: true,
     });
     
-    // For generateHealthRecommendations, we need QuizScoreResult but incomplete is fine to type cast
-    const recommendations = generateHealthRecommendations({
-      bmi,
-      bmr,
-      tdee,
-      sleepScore,
-      bmiCategory: 'Bình thường',
-      sleepCategory: 'Tốt',
-      dailyCalories: tdee,
-    } as any);
-
     const result: QuizScoreResult = {
       bmi,
       tdee,

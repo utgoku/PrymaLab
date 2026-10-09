@@ -1,4 +1,4 @@
-const siteUrl = 'https://prymalab.com';
+const siteUrl = 'https://www.prymalab.com';
 const key = 'f4c9a8127e6d43b19a05c7d2e8f631ab';
 const keyLocation = `${siteUrl}/${key}.txt`;
 
@@ -17,7 +17,7 @@ const response = await fetch('https://api.indexnow.org/indexnow', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json; charset=utf-8' },
   body: JSON.stringify({
-    host: 'prymalab.com',
+    host: 'www.prymalab.com',
     key,
     keyLocation,
     urlList,

@@ -86,8 +86,8 @@ export default function RegisterPage() {
       } else {
         router.push('/dashboard');
       }
-    } catch (err: any) {
-      setError(err.message || 'Có lỗi xảy ra khi đăng ký');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Có lỗi xảy ra khi đăng ký');
       setIsLoading(false);
     }
   };

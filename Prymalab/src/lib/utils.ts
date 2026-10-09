@@ -37,9 +37,9 @@ export function generateId(): string {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
-export function debounce<T extends (...args: any[]) => any>(fn: T, delay: number): (...args: Parameters<T>) => void {
+export function debounce<Args extends unknown[]>(fn: (...args: Args) => unknown, delay: number): (...args: Args) => void {
   let timeoutId: ReturnType<typeof setTimeout>;
-  return function (...args: Parameters<T>) {
+  return function (...args: Args) {
     if (timeoutId) {
       clearTimeout(timeoutId);
     }

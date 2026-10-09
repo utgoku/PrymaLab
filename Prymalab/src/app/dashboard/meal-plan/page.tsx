@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { ChevronLeft, ChevronRight, Sunrise, Sun, Moon, Cookie, Check, CalendarOff } from 'lucide-react';
-import { MealPlan, MealItem, MealType } from '@/types';
+import { useHydrated } from '@/lib/use-hydrated';
 
 // Mock Data Definitions
 type MockMealItem = {
@@ -142,11 +142,7 @@ export default function MealPlanPage() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isClient = useHydrated();
 
   const weekDates = useMemo(() => {
     const dates = [];

@@ -26,8 +26,8 @@ export default function LoginPage() {
     try {
       await login(email, password);
       router.push('/dashboard');
-    } catch (err: any) {
-      setError(err.message || 'Có lỗi xảy ra khi đăng nhập');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Có lỗi xảy ra khi đăng nhập');
       setIsLoading(false);
     }
   };

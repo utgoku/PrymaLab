@@ -1,7 +1,7 @@
-import { knowledgeArticles } from '@/lib/editorial';
+import { getPublishedArticles } from '@/lib/articles';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 function escapeXml(value: string) {
   return value
@@ -13,6 +13,7 @@ function escapeXml(value: string) {
 }
 
 export async function GET() {
+  const knowledgeArticles = await getPublishedArticles();
   const items = [...knowledgeArticles]
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
     .map((article) => {
@@ -24,7 +25,7 @@ export async function GET() {
       <guid isPermaLink="true">${url}</guid>
       <description>${escapeXml(article.description)}</description>
       <category>${escapeXml(article.category)}</category>
-      <pubDate>${new Date(`${article.publishedAt}T00:00:00+07:00`).toUTCString()}</pubDate>
+      <pubDate>${new Date(article.publishedAt).toUTCString()}</pubDate>
     </item>`;
     })
     .join('');
@@ -37,14 +38,14 @@ export async function GET() {
     <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
     <description>${escapeXml(SITE_DESCRIPTION)}</description>
     <language>vi-VN</language>
-    <lastBuildDate>${new Date('2026-08-19T00:00:00+07:00').toUTCString()}</lastBuildDate>${items}
+    <lastBuildDate>${new Date(knowledgeArticles.reduce((latest, article) => article.updatedAt > latest ? article.updatedAt : latest, '2026-08-19T00:00:00+07:00')).toUTCString()}</lastBuildDate>${items}
   </channel>
 </rss>`;
 
   return new Response(xml, {
     headers: {
       'Content-Type': 'application/rss+xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+      'Cache-Control': 'public, max-age=0, must-revalidate',
     },
   });
 }

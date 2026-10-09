@@ -1,10 +1,13 @@
 import type { MetadataRoute } from 'next';
-import { knowledgeArticles } from '@/lib/editorial';
+import { SITE_URL } from '@/lib/seo';
+import { getPublishedArticles } from '@/lib/articles';
+export const dynamic = 'force-dynamic';
 
-const siteUrl = 'https://prymalab.com';
-const updatedAt = new Date('2026-08-28T00:00:00+07:00');
+const siteUrl = SITE_URL;
+const updatedAt = new Date('2026-10-08T00:00:00+07:00');
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const knowledgeArticles = await getPublishedArticles();
   const routes: MetadataRoute.Sitemap = [
     { url: siteUrl, lastModified: updatedAt, changeFrequency: 'weekly', priority: 1 },
     { url: siteUrl + '/services', lastModified: updatedAt, changeFrequency: 'monthly', priority: 0.9 },
@@ -19,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   return [...routes, ...knowledgeArticles.map((article) => ({
     url: siteUrl + '/blog/' + article.slug,
-    lastModified: new Date(article.updatedAt + 'T00:00:00+07:00'),
+    lastModified: new Date(article.updatedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.75,
     images: [siteUrl + article.image],

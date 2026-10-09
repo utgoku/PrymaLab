@@ -131,7 +131,7 @@ export interface PublicHomeData {
  */
 export async function getPublicHomeData(): Promise<PublicHomeData> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 1500);
+  const timeout = setTimeout(() => controller.abort(), 5000);
 
   try {
     const [settingsResult, packagesResult] = await Promise.all([

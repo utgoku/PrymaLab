@@ -1,40 +1,34 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '@/lib/auth-context';
-import { UserProfile } from '@/types';
+import { TargetGoal, UserProfile } from '@/types';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 
 export default function SettingsPage() {
-  const { user, profile, updateProfile } = useAuth();
-  
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    age: '',
-    gender: 'other',
-    weight: '',
-    height: '',
-    targetGoal: 'maintain',
-  });
+  const { user, profile, updateProfile, isLoading } = useAuth();
+  if (isLoading || !user || !profile) return <p className="p-6 text-gray-500">Đang tải thông tin tài khoản…</p>;
+  return <SettingsForm key={user.id} profile={profile} email={user.email} updateProfile={updateProfile} />;
+}
+
+function SettingsForm({ profile, email, updateProfile }: {
+  profile: UserProfile;
+  email: string;
+  updateProfile: (data: Partial<UserProfile>) => Promise<void>;
+}) {
+  const [formData, setFormData] = useState(() => ({
+    fullName: profile.fullName || '',
+    email,
+    age: profile.age ? profile.age.toString() : '',
+    gender: profile.gender?.toLowerCase() || 'other',
+    weight: profile.weightKg ? profile.weightKg.toString() : '',
+    height: profile.heightCm ? profile.heightCm.toString() : '',
+    targetGoal: profile.targetGoal || TargetGoal.WEIGHT_MAINTAIN,
+  }));
   
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
-
-  useEffect(() => {
-    if (profile) {
-      setFormData({
-        fullName: profile.fullName || '',
-        email: user?.email || '',
-        age: profile.age ? profile.age.toString() : '',
-        gender: profile.gender || 'other',
-        weight: profile.weightKg ? profile.weightKg.toString() : '',
-        height: profile.heightCm ? profile.heightCm.toString() : '',
-        targetGoal: profile.targetGoal || 'maintain',
-      });
-    }
-  }, [user, profile]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -42,7 +36,7 @@ export default function SettingsPage() {
     setSaveSuccess(false);
   };
 
-  const handleGoalSelect = (goal: string) => {
+  const handleGoalSelect = (goal: TargetGoal) => {
     setFormData((prev) => ({ ...prev, targetGoal: goal }));
     setSaveSuccess(false);
   };
@@ -66,7 +60,7 @@ export default function SettingsPage() {
         gender: genderMap[formData.gender] || 'OTHER',
         weightKg: formData.weight ? parseFloat(formData.weight) : undefined,
         heightCm: formData.height ? parseFloat(formData.height) : undefined,
-        targetGoal: formData.targetGoal as unknown as UserProfile['targetGoal'],
+        targetGoal: formData.targetGoal,
       };
       
       await updateProfile(updatedProfile);
@@ -187,10 +181,10 @@ export default function SettingsPage() {
           <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-100 pb-3">Mục tiêu sức khỏe</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { id: 'maintain', label: 'Duy trì vóc dáng', desc: 'Giữ mức cân nặng hiện tại, ăn uống lành mạnh' },
-              { id: 'lose_weight', label: 'Giảm cân', desc: 'Đốt cháy calories, giảm mỡ an toàn' },
-              { id: 'gain_weight', label: 'Tăng cân', desc: 'Tăng cơ, bổ sung năng lượng dinh dưỡng' },
-              { id: 'improve_sleep', label: 'Cải thiện giấc ngủ', desc: 'Ngủ sâu hơn, thức dậy sảng khoái' },
+              { id: TargetGoal.WEIGHT_MAINTAIN, label: 'Duy trì vóc dáng', desc: 'Giữ mức cân nặng hiện tại, ăn uống lành mạnh' },
+              { id: TargetGoal.FAT_LOSS, label: 'Giảm cân', desc: 'Đốt cháy calories, giảm mỡ an toàn' },
+              { id: TargetGoal.MUSCLE_GAIN, label: 'Tăng cân', desc: 'Tăng cơ, bổ sung năng lượng dinh dưỡng' },
+              { id: TargetGoal.SLEEP_RECOVERY, label: 'Cải thiện giấc ngủ', desc: 'Ngủ sâu hơn, thức dậy sảng khoái' },
             ].map((goal) => (
               <div
                 key={goal.id}
