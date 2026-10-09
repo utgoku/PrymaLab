@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://prymalab.com';
+export const SITE_URL = 'https://www.prymalab.com';
 export const BRAND_NAME = 'PrymaLab';
 export const SITE_NAME = 'PrymaLab Việt Nam';
 export const SITE_ALTERNATE_NAMES = ['PrymaLab Việt Nam', 'prymalab.com'];

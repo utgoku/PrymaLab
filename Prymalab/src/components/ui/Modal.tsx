@@ -1,6 +1,7 @@
 'use client';
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { useHydrated } from '@/lib/use-hydrated';
 
 interface ModalProps {
   isOpen: boolean;
@@ -11,11 +12,7 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useHydrated();
 
   useEffect(() => {
     if (isOpen) {

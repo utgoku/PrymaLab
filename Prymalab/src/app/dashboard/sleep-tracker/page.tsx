@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { 
   Moon, 
@@ -20,7 +20,8 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Input } from '@/components/ui/Input';
-import { ProgressBar } from '@/components/ui/ProgressBar';
+import { useHydrated } from '@/lib/use-hydrated';
+import type { TooltipContentProps } from 'recharts';
 
 // Since Recharts uses browser APIs, we import it dynamically
 const AreaChart = dynamic(() => import('recharts').then(mod => mod.AreaChart), { ssr: false });
@@ -94,10 +95,45 @@ const generateMockData = (): SleepLog[] => {
   return data.reverse(); // Newest first
 };
 
+function CustomTooltip({ active, payload, label }: Partial<TooltipContentProps<number, string>>) {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-3 rounded-lg shadow-lg border border-gray-100 text-sm">
+          <p className="font-semibold text-gray-800 mb-1">{`Ngày ${label}`}</p>
+          {payload.map((entry, index) => {
+            const value = Number(entry.value ?? 0);
+            let valStr: string | number = value;
+            if (entry.dataKey === 'duration') {
+              const hours = Math.floor(value);
+              const mins = Math.round((value - hours) * 60);
+              valStr = `${hours} giờ ${mins} phút`;
+            } else if (entry.dataKey === 'quality') {
+              valStr = `${entry.value}/5 sao`;
+            } else if (entry.dataKey === 'bedTimeNum' || entry.dataKey === 'wakeTimeNum') {
+              let val = value;
+              if (val < 0) val += 24;
+              const h = Math.floor(val);
+              const m = Math.round((val - h) * 60);
+              valStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+            }
+            return (
+              <p key={index} style={{ color: entry.color || entry.fill }}>
+                {entry.name === 'duration' ? 'Thời lượng' :
+                 entry.name === 'quality' ? 'Chất lượng' :
+                 entry.name === 'bedTimeNum' ? 'Giờ ngủ' : 'Giờ dậy'}: {valStr}
+              </p>
+            );
+          })}
+        </div>
+      );
+    }
+    return null;
+  }
+
 export default function SleepTrackerPage() {
-  const [isClient, setIsClient] = useState(false);
+  const isClient = useHydrated();
   const [activeTab, setActiveTab] = useState<'7' | '30'>('7');
-  const [logs, setLogs] = useState<SleepLog[]>([]);
+  const [logs, setLogs] = useState<SleepLog[]>(generateMockData);
   const [isFormOpen, setIsFormOpen] = useState(false);
   
   // Form state
@@ -108,17 +144,12 @@ export default function SleepTrackerPage() {
   const [formNotes, setFormNotes] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-    setLogs(generateMockData());
-  }, []);
-
   // Calculate duration string for form
   const formDuration = useMemo(() => {
     const [bedH, bedM] = formBedTime.split(':').map(Number);
     const [wakeH, wakeM] = formWakeTime.split(':').map(Number);
     
-    let bedTimeMins = bedH * 60 + bedM;
+    const bedTimeMins = bedH * 60 + bedM;
     let wakeTimeMins = wakeH * 60 + wakeM;
     
     if (wakeTimeMins < bedTimeMins) {
@@ -178,39 +209,7 @@ export default function SleepTrackerPage() {
     });
   }, [logs, activeTab]);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-white p-3 rounded-lg shadow-lg border border-gray-100 text-sm">
-          <p className="font-semibold text-gray-800 mb-1">{`Ngày ${label}`}</p>
-          {payload.map((entry: any, index: number) => {
-            let valStr = entry.value;
-            if (entry.dataKey === 'duration') {
-              const hours = Math.floor(entry.value);
-              const mins = Math.round((entry.value - hours) * 60);
-              valStr = `${hours} giờ ${mins} phút`;
-            } else if (entry.dataKey === 'quality') {
-              valStr = `${entry.value}/5 sao`;
-            } else if (entry.dataKey === 'bedTimeNum' || entry.dataKey === 'wakeTimeNum') {
-              let val = entry.value;
-              if (val < 0) val += 24;
-              const h = Math.floor(val);
-              const m = Math.round((val - h) * 60);
-              valStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
-            }
-            return (
-              <p key={index} style={{ color: entry.color || entry.fill }}>
-                {entry.name === 'duration' ? 'Thời lượng' : 
-                 entry.name === 'quality' ? 'Chất lượng' : 
-                 entry.name === 'bedTimeNum' ? 'Giờ ngủ' : 'Giờ dậy'}: {valStr}
-              </p>
-            );
-          })}
-        </div>
-      );
-    }
-    return null;
-  };
+
 
   if (!isClient) return <div className="p-8 text-center text-gray-500">Đang tải dữ liệu...</div>;
 
@@ -562,7 +561,7 @@ export default function SleepTrackerPage() {
               
               {log.notes && (
                 <div className="bg-gray-50 p-2.5 rounded-lg text-sm text-gray-600 italic mt-2">
-                  "{log.notes}"
+                  &ldquo;{log.notes}&rdquo;
                 </div>
               )}
             </div>

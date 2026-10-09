@@ -67,7 +67,7 @@ export default async function MethodPage() {
               { icon: Calculator, label: 'Năng lượng', title: 'BMR & TDEE', text: 'BMR dùng Mifflin–St Jeor; TDEE nhân với hệ số vận động do người dùng lựa chọn.' },
               { icon: Scale, label: 'Cấu trúc cơ thể', title: 'BMI tham chiếu', text: 'BMI theo ngưỡng người trưởng thành và luôn đi cùng cảnh báo về giới hạn của chỉ số.' },
               { icon: Moon, label: 'Phục hồi', title: 'Tín hiệu giấc ngủ', text: 'Thang nội bộ tổng hợp thời lượng, vào giấc, thức giấc, cảm giác phục hồi và routine.' },
-            ].map((item) => <article key={item.title} className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-7"><item.icon className="h-6 w-6 text-[#d9f46f]" /><p className="mt-8 text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#8ed7cb]">{item.label}</p><h2 className="mt-3 text-2xl font-semibold">{item.title}</h2><p className="mt-4 text-sm leading-7 text-white/58">{item.text}</p></article>)}
+            ].map((item) => <article key={item.title} className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-7"><item.icon className="h-6 w-6 text-[#d9f46f]" /><p className="mt-8 text-xs font-extrabold uppercase tracking-[0.16em] text-[#8ed7cb]">{item.label}</p><h2 className="mt-3 text-2xl font-semibold">{item.title}</h2><p className="mt-4 text-sm leading-7 text-white/58">{item.text}</p></article>)}
           </div>
         </section>
 

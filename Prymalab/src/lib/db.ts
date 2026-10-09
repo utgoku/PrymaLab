@@ -103,10 +103,10 @@ export interface DatabaseSchema {
 }
 
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
-  phone: '',
-  email: '',
-  address: '',
-  workingHours: '',
+  phone: '0948 348 444',
+  email: 'ahunglua7@gmail.com',
+  address: 'Đà Nẵng, Việt Nam',
+  workingHours: 'Thứ Hai – Thứ Bảy, 08:00–18:00',
   heroCustomers: '0',
   heroSatisfaction: '0',
   heroExperts: '0',
@@ -131,7 +131,7 @@ export interface PublicHomeData {
  */
 export async function getPublicHomeData(): Promise<PublicHomeData> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 1500);
+  const timeout = setTimeout(() => controller.abort(), 5000);
 
   try {
     const [settingsResult, packagesResult] = await Promise.all([

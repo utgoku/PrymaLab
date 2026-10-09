@@ -4,10 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth-context';
 import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
 
 export default function DashboardOverviewPage() {
-  const { user, profile } = useAuth();
+  const { profile } = useAuth();
 
   const today = new Intl.DateTimeFormat('vi-VN', {
     weekday: 'long',

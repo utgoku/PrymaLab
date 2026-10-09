@@ -16,7 +16,6 @@ export async function GET(req: NextRequest) {
     for (let i = 0; i < days; i++) {
       const date = new Date(today);
       date.setDate(date.getDate() - i);
-      const dateStr = date.toISOString().split('T')[0];
       
       const bedTime = new Date(date);
       bedTime.setHours(22, 30, 0, 0);
@@ -65,20 +64,16 @@ export async function POST(req: NextRequest) {
     // Calculate duration in minutes accounting for overnight
     const [bedHour, bedMin] = bedTime.split(':').map(Number);
     const [wakeHour, wakeMin] = wakeTime.split(':').map(Number);
-    let bedMinutes = bedHour * 60 + bedMin;
-    let wakeMinutes = wakeHour * 60 + wakeMin;
-    
-    if (wakeMinutes < bedMinutes) {
-      wakeMinutes += 24 * 60; // Next day
-    }
-    const duration = wakeMinutes - bedMinutes;
+    const bedMinutes = bedHour * 60 + bedMin;
+    const wakeMinutes = wakeHour * 60 + wakeMin;
+    const overnight = wakeMinutes < bedMinutes;
 
     const logDateObj = new Date(logDate as string);
     const bedDate = new Date(logDateObj);
     bedDate.setHours(bedHour, bedMin, 0, 0);
     const wakeDate = new Date(logDateObj);
     wakeDate.setHours(wakeHour, wakeMin, 0, 0);
-    if (wakeMinutes < bedMinutes) {
+    if (overnight) {
       wakeDate.setDate(wakeDate.getDate() + 1); // Next day
     }
 

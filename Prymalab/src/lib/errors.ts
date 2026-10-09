@@ -28,9 +28,9 @@ export type ErrorCodeType = typeof ErrorCode[keyof typeof ErrorCode];
 export class AppError extends Error {
   public code: ErrorCodeType;
   public statusCode: number;
-  public details?: any;
+  public details?: unknown;
 
-  constructor(message: string, code: ErrorCodeType, statusCode: number = 500, details?: any) {
+  constructor(message: string, code: ErrorCodeType, statusCode: number = 500, details?: unknown) {
     super(message);
     this.name = 'AppError';
     this.code = code;
@@ -71,6 +71,6 @@ export function createApiErrorResponse(error: unknown) {
   );
 }
 
-export function isAppError(error: any): error is AppError {
+export function isAppError(error: unknown): error is AppError {
   return error instanceof AppError;
 }

@@ -158,7 +158,7 @@ export interface ContactFormData {
   message: string;
 }
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: ApiError;

@@ -25,24 +25,17 @@ const petals = [
 ];
 
 export function FloatingLeaves() {
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {/* Generate 15 petals spread across the screen */}
       {[...Array(15)].map((_, i) => {
         const petal = petals[i % petals.length];
-        const randomX = Math.random() * 100; // 0 to 100vw
-        const randomDelay = Math.random() * 5;
-        const randomDuration = 12 + Math.random() * 15; // 12 to 27 seconds for falling
-        const randomScale = 0.4 + Math.random() * 0.8; // smaller scale for petals
-        const randomRotation = Math.random() * 360;
+        // Stable across server rendering, hydration and subsequent renders.
+        const randomX = ((i * 37 + 11) % 100);
+        const randomDelay = ((i * 17) % 50) / 10;
+        const randomDuration = 12 + ((i * 7) % 15);
+        const randomScale = 0.4 + ((i * 13) % 8) / 10;
+        const randomRotation = (i * 137) % 360;
         
         return (
           <motion.div
@@ -56,8 +49,8 @@ export function FloatingLeaves() {
             }}
             animate={{ 
               y: '110vh',
-              rotate: randomRotation + (Math.random() > 0.5 ? 360 : -360),
-              x: `${randomX + (Math.random() * 20 - 10)}vw` 
+              rotate: randomRotation + (i % 2 ? 360 : -360),
+              x: `${randomX + ((i * 11) % 20 - 10)}vw`
             }}
             transition={{ 
               duration: randomDuration, 

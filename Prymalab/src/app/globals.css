@@ -88,9 +88,11 @@
   }
 
   body {
+    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    --font-display: var(--font-playfair), Georgia, serif;
     font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    line-height: 1.65;
+    font-size: 1rem;
+    line-height: 1.75;
     background-color: #f6f8f4;
     color: #23484d;
     overflow-x: hidden;
@@ -204,10 +206,10 @@
     align-items: center;
     gap: 0.65rem;
     color: #0b7f72;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    line-height: 1;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
     text-transform: uppercase;
   }
 
@@ -290,7 +292,7 @@
     }
 
     .hero-heading {
-      font-size: 2.78rem;
+      font-size: 2.5rem;
       line-height: 1.1;
       letter-spacing: -0.038em;
     }
@@ -338,4 +340,20 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+/* A comfortable reading measure and clear controls on small screens. */
+@layer base {
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  p.text-sm { font-size: 1rem; line-height: 1.8; }
+  button, input, textarea, select { font: inherit; }
+  button:not(:disabled), summary { cursor: pointer; }
+  [id] { scroll-margin-top: 6rem; }
+}
+@layer utilities {
+  .article-body { font-size: 1.0625rem; line-height: 1.9; overflow-wrap: anywhere; }
+  .article-body p { max-width: 70ch; }
+  .article-body h2 { line-height: 1.35; }
+  .article-body [class*="text-sm"], .article-body [class*="text-[15px]"] { font-size: inherit; line-height: inherit; }
 }

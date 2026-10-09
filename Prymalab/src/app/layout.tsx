@@ -8,14 +8,14 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 const inter = Inter({
   subsets: ['latin', 'vietnamese'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-sans',
+  variable: '--font-inter',
   display: 'swap',
 });
 
 const playfair = Playfair_Display({
   subsets: ['latin', 'vietnamese'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-display',
+  variable: '--font-playfair',
   display: 'swap',
 });
 

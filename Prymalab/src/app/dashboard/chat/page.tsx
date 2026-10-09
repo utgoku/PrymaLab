@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 
 // Types
 interface Message {
@@ -111,7 +111,7 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const activeConversation = DEMO_CONVERSATIONS.find(c => c.id === activeConversationId);
-  const currentMessages = activeConversationId ? (messages[activeConversationId] || []) : [];
+  const currentMessages = useMemo(() => activeConversationId ? (messages[activeConversationId] || []) : [], [activeConversationId, messages]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

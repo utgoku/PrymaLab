@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --test scripts/quality.test.mjs",
     "seo:indexnow": "node scripts/submit-indexnow.mjs",
     "seo:audit": "node scripts/audit-seo.mjs",
     "db:migrate": "node --env-file=.env.local scripts/apply-migrations.mjs"
