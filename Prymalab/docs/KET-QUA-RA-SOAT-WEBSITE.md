@@ -5,7 +5,7 @@
 - Rút gọn trang chủ: thông điệp chính, cách bắt đầu, gói dịch vụ, bài mới và câu hỏi thường gặp. Bỏ các khối dài, lời kêu gọi lặp lại và số liệu minh họa dễ bị hiểu thành kết quả thực tế.
 - Sửa liên kết font để tiêu đề và nội dung dùng đúng bộ chữ; cân lại kích thước chữ, độ tương phản, khoảng cách và hiển thị điện thoại.
 - Làm rõ dịch vụ trực tuyến, quy trình tiếp nhận và phạm vi sản phẩm. Giá và thông tin gói lấy từ dữ liệu quản trị hiện có.
-- Giữ thông tin đã xác nhận: 0948 348 444; ahunglua7@gmail.com; Đà Nẵng, Việt Nam; Thứ Hai–Thứ Bảy, 08:00–18:00.
+- Giữ thông tin đã xác nhận: 0948 348 444; hung@prymalab.com; Đà Nẵng, Việt Nam; Thứ Hai–Thứ Bảy, 08:00–18:00.
 - Mục Kiến thức có tìm kiếm, lọc chủ đề và bài liên quan. Sáu bài đang công khai được quản lý bằng dữ liệu, các bản cũ ngừng công khai được giữ nháp.
 
 ## Viết và đăng bài
@@ -18,9 +18,15 @@ Hỗ trợ văn bản, tiêu đề phần, danh sách, nguồn tham khảo và b
 
 ## Ba blog vệ tinh
 
-Đã chuẩn bị bộ khởi động cho Blogger, WordPress.com và Tumblr: tên/định hướng riêng, giới thiệu, hai bài mỗi nền tảng, phần giao diện và hướng dẫn thao tác. Tên miền gợi ý chưa được đăng ký. Các blog **chưa được tạo hoặc xuất bản** vì chủ website chưa có tài khoản và muốn tự tạo.
+Đã tạo và đăng công khai **Blogger, WordPress.com và Tumblr**, mỗi blog có hai bài riêng, phần giới thiệu/liên hệ và liên kết về PrymaLab. Chủ website đã hoàn tất các bước đăng nhập, xác nhận tài khoản và điều khoản. Email công khai được xác nhận là **hung@prymalab.com**.
 
-Tải `bo-khoi-dong-3-blog-prymalab.zip`, đọc `blog-ve-tinh/README.md`, tạo tài khoản rồi dùng nội dung tương ứng. Bản nhập WordPress được đặt ở trạng thái nháp và đã kiểm tra cấu trúc XML; cần kiểm tra bản nhập thực tế sau khi có tài khoản.
+- [Bữa ăn có nhịp — Blogger](https://buaancohnhip-prymalab.blogspot.com/)
+- [Sổ tay giấc ngủ — WordPress.com](https://sotaygiacnguprymalab.wordpress.com/)
+- [Nhịp sống nhỏ — Tumblr](https://nhipsongnho-prymalab.tumblr.com/)
+
+Đã chỉnh cỡ chữ, khoảng cách, rút gọn mô tả và bỏ tiêu đề lặp. WordPress hiển thị trích đoạn ở trang chủ, bỏ nội dung mẫu và chân trang giả. Tumblr có giao diện riêng cho máy tính/điện thoại và phần liên hệ. Đã chọn giờ Việt Nam cho cả ba blog.
+
+Hướng dẫn quản lý, đăng bài và bản sao giao diện trong [BAN-GIAO-3-BLOG.md](BAN-GIAO-3-BLOG.md). Không cần tạo lại tài khoản hoặc nhập lại XML lên blog hiện tại.
 
 ## Kiểm chứng
 

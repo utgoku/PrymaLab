@@ -1,7 +1,10 @@
 {
   "platform": "wordpress",
   "name": "Sổ tay giấc ngủ | PrymaLab",
-  "slug": "sotaygiacngu-prymalab",
+  "slug": "sotaygiacnguprymalab",
+  "public_url": "https://sotaygiacnguprymalab.wordpress.com/",
+  "contact_email": "hung@prymalab.com",
+  "timezone": "Asia/Ho_Chi_Minh",
   "tagline": "Quan sát giấc ngủ bằng những ghi chép dễ duy trì.",
   "color": "#1e465b",
   "title": "Ghi nhật ký giấc ngủ mà không biến nó thành áp lực",

@@ -1,16 +1,18 @@
-# Bộ khởi động 3 blog PrymaLab
+# Ba blog PrymaLab đã công khai
 
-Trạng thái ngày 08/10/2026: đã chuẩn bị nội dung và giao diện; **chưa có tài khoản, chưa tạo blog và chưa đăng công khai** theo lựa chọn của chủ website. Các tên miền bên dưới chỉ là đề xuất, chưa kiểm tra tính khả dụng.
+Trạng thái ngày 09/10/2026: **đã tạo và đăng công khai cả ba blog**, mỗi blog có hai bài riêng và phần giới thiệu/liên hệ. Chủ website đã hoàn tất đăng nhập, xác nhận tài khoản và điều khoản. Email công khai được xác nhận là **hung@prymalab.com**.
 
-| Nền tảng | Tên blog | Địa chỉ đề xuất | Vai trò |
+Xem [hướng dẫn bàn giao và đăng bài](../BAN-GIAO-3-BLOG.md). Các mục thiết lập bên dưới được giữ làm tài liệu tham khảo khi cần tạo lại; không cần tạo tài khoản hoặc nhập bài lần nữa.
+
+| Nền tảng | Tên blog | Địa chỉ công khai | Vai trò |
 |---|---|---|---|
-| Blogger | Bữa ăn có nhịp — PrymaLab | buaancohnhip-prymalab.blogspot.com | Tổ chức bữa ăn, mẫu chuẩn bị cho ngày bận |
-| WordPress.com | Sổ tay giấc ngủ — PrymaLab | sotaygiacngu-prymalab.wordpress.com | Nhật ký, giải thích và hướng dẫn dài |
-| Tumblr | Nhịp sống nhỏ — PrymaLab | nhipsongnho-prymalab.tumblr.com | Ghi chú ngắn, lời nhắc thực hành |
+| Blogger | Bữa ăn có nhịp — PrymaLab | https://buaancohnhip-prymalab.blogspot.com/ | Tổ chức bữa ăn, mẫu chuẩn bị cho ngày bận |
+| WordPress.com | Sổ tay giấc ngủ — PrymaLab | https://sotaygiacnguprymalab.wordpress.com/ | Nhật ký, giải thích và hướng dẫn dài |
+| Tumblr | Nhịp sống nhỏ — PrymaLab | https://nhipsongnho-prymalab.tumblr.com/ | Ghi chú ngắn, lời nhắc thực hành |
 
 Mở `xem-truoc.html` để xem bộ ba. Mỗi thư mục có tên bài, mô tả, nội dung HTML có thể dán vào trình soạn thảo, trang giới thiệu và một bài thứ hai. Tất cả đều nhận diện công khai là blog của PrymaLab Việt Nam. Bài mở đầu khác nhau để người đọc nhận được giá trị riêng trên từng kênh.
 
-## Việc chủ website cần làm
+## Thiết lập tài khoản — đã hoàn tất
 
 1. Tạo tài khoản bằng email thuộc quyền quản lý của bạn tại từng nền tảng. Tự đặt mật khẩu, xác nhận email và chấp nhận điều khoản. Bật xác thực hai bước khi nền tảng hỗ trợ.
 2. Chọn gói miễn phí và tên miền phụ miễn phí. Chưa cần mua tên miền hoặc nâng cấp trả phí.
@@ -43,8 +45,8 @@ Mở `xem-truoc.html` để xem bộ ba. Mỗi thư mục có tên bài, mô t�
 
 Đây là lịch gợi ý, chưa tạo lịch tự động hay tác vụ nhắc việc.
 
-- Tuần 1: đăng bài mở đầu ở từng kênh, kiểm tra liên kết, thiết lập trang Giới thiệu.
-- Tuần 2: Blogger đăng “Ba câu hỏi trước khi chuẩn bị bữa ăn”; WordPress đăng “Một góc nghỉ ngơi ít bị gián đoạn”; Tumblr đăng “Lời nhắc hôm nay: chỉ chọn một việc”.
+- Hai bài khởi đầu và phần Giới thiệu ở mỗi kênh đã đăng ngày 09/10/2026.
+- Bài kế tiếp: chọn một câu hỏi mới của người đọc, triển khai theo chủ đề riêng của mỗi blog.
 - Tuần 3: viết thêm một ví dụ thực hành từ câu hỏi người đọc; không dùng hồ sơ hay dữ liệu khách hàng nếu chưa được phép.
 - Tuần 4: xem lượt đọc và lượt truy cập về website; giữ kênh có người đọc thật, cập nhật bài cũ khi có điều cần sửa.
 
