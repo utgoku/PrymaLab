@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import HomeExperience, { faqs } from '@/components/home/HomeExperience';
 import { getPublicHomeData } from '@/lib/db';
-import { SITE_ALTERNATE_NAMES, SITE_NAME, SITE_URL } from '@/lib/seo';
+import { SITE_ALTERNATE_NAMES, SITE_FOUNDER_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: { absolute: `${SITE_NAME} | Dinh dưỡng & giấc ngủ cá nhân hóa` },
@@ -24,8 +24,10 @@ export default async function HomePage() {
         name: SITE_NAME,
         alternateName: SITE_ALTERNATE_NAMES,
         url: `${SITE_URL}/`,
-        description: 'Nền tảng tại Việt Nam về giáo dục dinh dưỡng, chất lượng giấc ngủ và xây dựng thói quen theo nhịp sống cá nhân. Không kinh doanh peptide hoặc hóa chất nghiên cứu.',
-        disambiguatingDescription: 'PrymaLab Việt Nam tại prymalab.com là một dự án độc lập về dinh dưỡng, giấc ngủ và thói quen; không liên kết, không được ủy quyền và không cùng chủ sở hữu với prymalab.net.',
+        description: SITE_FOUNDER_DESCRIPTION,
+        founder: { '@type': 'Person', name: 'Dương Thế Hùng' },
+        foundingDate: '2026-08-17',
+        disambiguatingDescription: 'PrymaLab Việt Nam tại prymalab.com là một dự án founder-led về dinh dưỡng, giấc ngủ và thói quen; không liên kết, không được ủy quyền và không cùng chủ sở hữu với prymalab.net.',
         slogan: 'Ăn đúng nhịp. Ngủ sâu hơn. Sống sáng hơn.',
         logo: {
           '@type': 'ImageObject',

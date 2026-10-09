@@ -166,7 +166,7 @@ CREATE POLICY "Service role full access orders" ON orders FOR ALL TO service_rol
 -- Site Settings
 INSERT INTO site_settings (key, value) VALUES
   ('phone', '0948 348 444'),
-  ('email', 'Ahunglua7@gmail.com'),
+  ('email', 'hung@prymalab.com'),
   ('address', 'Nguyễn Tất Thành - Đà Nẵng'),
   ('workingHours', '08:30 - 17:00 (Thứ 2 - Thứ 6)'),
   ('heroCustomers', '1000'),

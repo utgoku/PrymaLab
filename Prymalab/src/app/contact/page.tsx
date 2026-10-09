@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default async function ContactPage() {
   const { settings } = await getPublicHomeData();
   const phone = settings.phone || '0948 348 444';
-  const email = settings.email || 'ahunglua7@gmail.com';
+  const email = settings.email || 'hung@prymalab.com';
   const address = settings.address || 'Đà Nẵng, Việt Nam';
   const workingHours = settings.workingHours || 'Thứ Hai – Thứ Bảy, 08:00–18:00';
   const phoneHref = phone.replace(/\D/g, '');

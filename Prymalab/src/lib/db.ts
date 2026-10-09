@@ -103,10 +103,10 @@ export interface DatabaseSchema {
 }
 
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
-  phone: '',
-  email: '',
-  address: '',
-  workingHours: '',
+  phone: '0948 348 444',
+  email: 'hung@prymalab.com',
+  address: 'Đà Nẵng, Việt Nam',
+  workingHours: 'Thứ Hai – Thứ Bảy, 08:00–18:00',
   heroCustomers: '0',
   heroSatisfaction: '0',
   heroExperts: '0',

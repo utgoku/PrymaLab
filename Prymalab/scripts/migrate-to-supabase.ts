@@ -103,7 +103,7 @@ async function migrateData() {
   console.log('Migrating site settings...');
   const DEFAULT_SITE_SETTINGS = {
     phone: '0948 348 444',
-    email: 'Ahunglua7@gmail.com',
+    email: 'hung@prymalab.com',
     address: 'Nguyễn Tất Thành - Đà Nẵng',
     workingHours: '08:30 - 17:00 (Thứ 2 - Thứ 6)',
     heroCustomers: '1000',

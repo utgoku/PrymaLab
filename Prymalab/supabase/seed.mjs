@@ -45,7 +45,7 @@ async function seedData() {
   // 1. Site Settings
   await insertData('site_settings', [
     { key: 'phone', value: '0948 348 444' },
-    { key: 'email', value: 'Ahunglua7@gmail.com' },
+    { key: 'email', value: 'hung@prymalab.com' },
     { key: 'address', value: 'Nguyễn Tất Thành - Đà Nẵng' },
     { key: 'workingHours', value: '08:30 - 17:00 (Thứ 2 - Thứ 6)' },
     { key: 'heroCustomers', value: '1000' },

@@ -35,7 +35,7 @@ const footerGroups = [
 
 export function Footer({ settings }: { settings?: SiteSettings }) {
   const phone = settings?.phone || '0948 348 444';
-  const email = settings?.email || 'Ahunglua7@gmail.com';
+  const email = settings?.email || 'hung@prymalab.com';
   const address = settings?.address || 'Đà Nẵng, Việt Nam';
 
   return (
